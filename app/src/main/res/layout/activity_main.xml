@@ -10,6 +10,8 @@
    <com.mironov.animationexpandiconsgroup.ExpandableLayout
        android:id="@+id/container1"
        android:background="@drawable/container_shape"
+       android:animateLayoutChanges="true"
+       app:expandBy="50"
        android:layout_width="100dp"
        android:layout_height="100dp"
        android:layout_marginStart="24dp"
