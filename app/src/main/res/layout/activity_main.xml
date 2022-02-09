@@ -1,73 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    tools:context=".MainActivity">
 
-   <com.mironov.animationexpandiconsgroup.ExpandableLayout
-       android:id="@+id/container1"
-       android:background="@drawable/container_shape"
-       android:animateLayoutChanges="true"
-       app:expandBy="50"
-       android:layout_width="100dp"
-       android:layout_height="100dp"
-       android:layout_marginStart="24dp"
-       android:layout_marginLeft="24dp"
-       android:layout_marginTop="24dp"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent">
+    <com.mironov.animationexpandiconsgroup.ExpandableLayout
+        android:id="@+id/container1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:expandHeightBy="300dp"
+        app:iconsSize="@dimen/icons_size"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/container_shape"
 
-      <TableRow>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-         <ImageView
-             android:layout_width="@dimen/icons_size"
-             android:layout_height="@dimen/icons_size"
-             android:src="@drawable/ic_baseline_airplanemode_active"
-             android:scaleX="1.0"
-             android:scaleY="1.0">
+        <TableRow
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            >
 
-         </ImageView>
+            <ImageView
+                
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:src="@drawable/ic_baseline_airplanemode_active">
 
-         <ImageView
-             android:layout_width="@dimen/icons_size"
-             android:layout_height="@dimen/icons_size"
-             android:src="@drawable/ic_baseline_phone">
+            </ImageView>
 
-         </ImageView>
-      </TableRow>
+            <ImageView
+                
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:src="@drawable/ic_baseline_phone">
+            </ImageView>
+        </TableRow>
 
-      <TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            >
 
-         <ImageView
-             android:layout_width="@dimen/icons_size"
-             android:layout_height="@dimen/icons_size"
-             android:src="@drawable/ic_baseline_network">
+            <ImageView
+                
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:src="@drawable/ic_baseline_network">
+            </ImageView>
 
-         </ImageView>
+            <ImageView
+                
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:src="@drawable/ic_baseline_bluetooth_audio" />
+        </TableRow>
 
-         <ImageView
-             android:layout_width="@dimen/icons_size"
-             android:layout_height="@dimen/icons_size"
-             android:src="@drawable/ic_baseline_bluetooth_audio" />
-      </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            >
 
-      <TableRow>
+            <ImageView
+                
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:src="@drawable/ic_baseline_gps">
+            </ImageView>
 
-         <ImageView
-             android:layout_width="@dimen/icons_size"
-             android:layout_height="@dimen/icons_size"
-             android:src="@drawable/ic_baseline_gps">
+            <ImageView
+                
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:src="@drawable/ic_baseline_wifi" />
+        </TableRow>
 
-         </ImageView>
-
-         <ImageView
-             android:layout_width="@dimen/icons_size"
-             android:layout_height="@dimen/icons_size"
-             android:src="@drawable/ic_baseline_wifi" />
-      </TableRow>
-
-   </com.mironov.animationexpandiconsgroup.ExpandableLayout>
+    </com.mironov.animationexpandiconsgroup.ExpandableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

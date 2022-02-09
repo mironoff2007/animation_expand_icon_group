@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ExpandableLayout">
-        <attr name="expandBy" format="integer" />
+        <attr name="expandHeightBy" format="dimension" />
+        <attr name="expandWidthBy" format="dimension" />
+        <attr name="iconsSize" format="dimension" />
     </declare-styleable>
 </resources>

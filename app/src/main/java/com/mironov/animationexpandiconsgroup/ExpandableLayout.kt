@@ -6,29 +6,50 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
+import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TableLayout
+import android.widget.TableRow
+import androidx.core.view.children
+import androidx.core.view.marginTop
 import kotlin.math.roundToInt
 
 
 class ExpandableLayout : TableLayout {
 
+    companion object{
+        const val NAMESPACE="http://schemas.android.com/apk/res/android"
+        const val LAYOUT_HEIGHT="layout_height"
+    }
+
     private var expanded=false
     private var heightIncrement=0
+    private var heightInitial=0
     private val expandAndShrinkDuration=200L
+    private val rowsCount=3
+    private var iconSize=0 //dp
 
     @SuppressLint("Recycle")
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        var expandBy=0
+        var expandBy=""
         if (attrs != null) {
             val a = context!!.obtainStyledAttributes(attrs, R.styleable.ExpandableLayout)
-            if (a.hasValue(R.styleable.ExpandableLayout_expandBy)) {
-                expandBy = a.getInt(R.styleable.ExpandableLayout_expandBy,0)
+            if (a.hasValue(R.styleable.ExpandableLayout_expandHeightBy)) {
+                expandBy = a.getString(R.styleable.ExpandableLayout_expandHeightBy).toString()
             }
+            if (a.hasValue(R.styleable.ExpandableLayout_expandHeightBy)) {
+                iconSize = dpToPx(a.getString(R.styleable.ExpandableLayout_iconsSize).toString())
+            }
+            //heightInitial=dpToPx(attrs.getAttributeValue(NAMESPACE, LAYOUT_HEIGHT))
         }
-        heightIncrement= dpToPx(expandBy).roundToInt()
+        heightIncrement= dpToPx(expandBy)
+    }
+
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        super.onLayout(changed, l, t, r, b)
     }
 
 
@@ -55,7 +76,6 @@ class ExpandableLayout : TableLayout {
 
     private fun expand(){
         expanded=true
-
         animateHeightResize(heightIncrement)
     }
 
@@ -73,18 +93,41 @@ class ExpandableLayout : TableLayout {
             val layoutParams = this.layoutParams
             layoutParams.height = animatedValue
             this.layoutParams = layoutParams
+
+            //Add margins
+            this.children.filter { it is TableRow}.forEach {
+                val params=it.layoutParams as MarginLayoutParams
+                params.topMargin= calculateMargin(animatedValue)
+                it.layoutParams=params
+            }
             this.invalidate()
         }
         valueAnimator.start()
     }
 
-    fun dpToPx(dp: Int): Float {
+    private fun calculateMargin(animatedValue:Int):Int{
+        val allIconsHeight=rowsCount*iconSize
+        var margin:Int= ((animatedValue-allIconsHeight)/(rowsCount+1))
+        if(margin<0){margin=0}
+        return margin
+    }
+
+    fun dpToPx(dp: String): Int {
+        val dpNumber=dp.replace("dip","")
+        val r: Resources = resources
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dpNumber.toFloat(),
+            r.displayMetrics
+        ).roundToInt()
+    }
+    fun dpToPx(dp: Int): Int {
         val r: Resources = resources
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             dp.toFloat(),
             r.displayMetrics
-        )
+        ).roundToInt()
     }
 
 }
