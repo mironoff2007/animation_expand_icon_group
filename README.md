@@ -9,6 +9,6 @@
 7) Translate expanded container to center and back - 1 hour
 8) Clean code,fix bugs - 1 hour
 
-<img src="https://github.com/mironoff2007/animation_expand_icon_group/blob/master/animation_icons_block_preview.mp4" width="400" height="600"/>
+<img src="https://github.com/mironoff2007/animation_expand_icon_group/blob/master/animation_icons_block_preview.gif?raw=true" width="400" height="600"/>
 
 
