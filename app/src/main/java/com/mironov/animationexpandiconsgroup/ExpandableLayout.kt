@@ -6,31 +6,25 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
-import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TableLayout
 import android.widget.TableRow
 import androidx.core.view.children
-import androidx.core.view.marginTop
 import kotlin.math.roundToInt
 
 
 class ExpandableLayout : TableLayout {
 
-    companion object{
-        const val NAMESPACE="http://schemas.android.com/apk/res/android"
-        const val LAYOUT_HEIGHT="layout_height"
-    }
+
 
     private var expanded=false
     private var heightIncrement=0
     private var widthIncrement=0
-    //private var heightInitial=0
     private val expandAndShrinkDuration=200L
     private val rowsCount=3
+    private val columnsCount=2
     private var iconSize=0 //dp
 
     @SuppressLint("Recycle")
@@ -105,10 +99,9 @@ class ExpandableLayout : TableLayout {
             //Add margins
             this.children.filter { it is TableRow}.forEach {
                 val params=it.layoutParams as MarginLayoutParams
-                params.topMargin= calculateMargin(animatedValue)
+                params.topMargin= calculateMargin(animatedValue,rowsCount)
                 it.layoutParams=params
             }
-            this.invalidate()
         }
         valueAnimator.start()
     }
@@ -122,14 +115,22 @@ class ExpandableLayout : TableLayout {
             val layoutParams = this.layoutParams
             layoutParams.width = animatedValue
             this.layoutParams = layoutParams
-            this.invalidate()
+            //Add margins
+            this.children.filter {it is TableRow}.forEach { row ->
+                val rowView=row as TableRow
+                rowView.children.forEach { icon->
+                    val params=icon.layoutParams as MarginLayoutParams
+                    params.leftMargin= calculateMargin(animatedValue,columnsCount)
+                    icon.layoutParams=params
+                }
+            }
         }
         valueAnimator.start()
     }
 
-    private fun calculateMargin(animatedValue:Int):Int{
-        val allIconsHeight=rowsCount*iconSize
-        var margin:Int= ((animatedValue-allIconsHeight)/(rowsCount+1))
+    private fun calculateMargin(animatedValue:Int, count:Int):Int{
+        val allIconsSize=count*iconSize
+        var margin:Int= ((animatedValue-allIconsSize)/(count+1))
         if(margin<0){margin=0}
         return margin
     }
