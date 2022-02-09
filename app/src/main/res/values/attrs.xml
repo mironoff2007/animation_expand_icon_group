@@ -4,5 +4,6 @@
         <attr name="expandHeightBy" format="dimension" />
         <attr name="expandWidthBy" format="dimension" />
         <attr name="iconsSize" format="dimension" />
+        <attr name="iconsPadding" format="dimension" />
     </declare-styleable>
 </resources>
