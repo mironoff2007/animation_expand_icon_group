@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity() {
             showOthers(expandedView!!)
             expandedView = null
         }
-
     }
 
     override fun onDestroy() {

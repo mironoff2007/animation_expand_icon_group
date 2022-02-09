@@ -5,57 +5,50 @@ import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.Point
 import android.util.AttributeSet
 import android.util.TypedValue
-import android.view.Display
-import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.TableLayout
 import android.widget.TableRow
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.res.getIntOrThrow
+import androidx.core.content.res.getStringOrThrow
 import androidx.core.view.children
 import kotlin.math.roundToInt
 
-
 class ExpandableLayout : TableLayout {
-
 
     private var expanded = false
     private var faded = false
-    private var heightIncrement = 0//px
-    private var widthIncrement = 0//px
     private val expandAndShrinkDuration = 200L
-    private val rowsCount = 3
-    private val columnsCount = 2
-    private var iconSize = 0 //dp
+
+    //must be declared in xml
+    private var heightIncrement =0//px
+    private var widthIncrement =0//px
+    private var iconSize =0//px
+    private var rowsCount = 0
+    private var columnsCount = 0
+
 
     @SuppressLint("Recycle")
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
         if (attrs != null) {
             val a = context!!.obtainStyledAttributes(attrs, R.styleable.ExpandableLayout)
-            if (a.hasValue(R.styleable.ExpandableLayout_expandHeightBy)) {
-                val expandHeightBy =
-                    a.getString(R.styleable.ExpandableLayout_expandHeightBy).toString()
-                heightIncrement = dpToPx(expandHeightBy)
-            }
-            if (a.hasValue(R.styleable.ExpandableLayout_expandHeightBy)) {
-                val expandWidthBy =
-                    a.getString(R.styleable.ExpandableLayout_expandWidthBy).toString()
-                widthIncrement = dpToPx(expandWidthBy)
-            }
-            if (a.hasValue(R.styleable.ExpandableLayout_expandHeightBy)) {
-                iconSize = dpToPx(a.getString(R.styleable.ExpandableLayout_iconsSize).toString())
-            }
+            val expandHeightBy =
+                a.getString(R.styleable.ExpandableLayout_expandHeightBy).toString()
+            heightIncrement = dpToPx(expandHeightBy)
+            val expandWidthBy =
+                a.getString(R.styleable.ExpandableLayout_expandWidthBy).toString()
+            widthIncrement = dpToPx(expandWidthBy)
+
+            iconSize = dpToPx(a.getStringOrThrow(R.styleable.ExpandableLayout_iconsSize))
+            rowsCount= a.getIntOrThrow(R.styleable.ExpandableLayout_rowsCount)
+            columnsCount= a.getIntOrThrow(R.styleable.ExpandableLayout_columnsCount)
         }
     }
-
 
     fun touch() {
         if (!expanded) {
@@ -75,7 +68,6 @@ class ExpandableLayout : TableLayout {
                 })
             this.startAnimation(touchAnimation)
         }
-
     }
 
     private fun expand() {
@@ -94,21 +86,21 @@ class ExpandableLayout : TableLayout {
         translateBack()
     }
 
-    private fun translateToCenter(){
+    private fun translateToCenter() {
 
-        val w=(parent as ViewGroup).width
-        val h=(parent as ViewGroup).height
+        val w = (parent as ViewGroup).width
+        val h = (parent as ViewGroup).height
 
-        var moveX = w / 2 - (this.x+(width+widthIncrement)/2)
-        var moveY = h / 2 - (this.y+(width+heightIncrement)/2)
-        animateTranslation(moveX,moveY)
+        val moveX = w / 2 - (this.x + (width + widthIncrement) / 2)
+        val moveY = h / 2 - (this.y + (width + heightIncrement) / 2)
+        animateTranslation(moveX, moveY)
     }
 
-    private fun translateBack(){
-        animateTranslation(0f,0f)
+    private fun translateBack() {
+        animateTranslation(0f, 0f)
     }
 
-    private fun animateTranslation(moveX:Float, moveY:Float){
+    private fun animateTranslation(moveX: Float, moveY: Float) {
         this.animate()
             .translationX(moveX)
             .translationY(moveY)
@@ -146,6 +138,7 @@ class ExpandableLayout : TableLayout {
             val layoutParams = this.layoutParams
             layoutParams.width = animatedValue
             this.layoutParams = layoutParams
+
             //Add margins
             this.children.filter { it is TableRow }.forEach { row ->
                 val rowView = row as TableRow
@@ -159,6 +152,9 @@ class ExpandableLayout : TableLayout {
         valueAnimator.start()
     }
 
+    /**
+     **Calculates margins to arrange icons evenly in container
+     * */
     private fun calculateMargin(animatedValue: Int, count: Int): Int {
         val allIconsSize = count * iconSize
         var margin: Int = ((animatedValue - allIconsSize) / (count + 1))
@@ -170,7 +166,7 @@ class ExpandableLayout : TableLayout {
 
     fun fade() {
         if (!faded) {
-            faded=true
+            faded = true
             val animation = AlphaAnimation(1f, 0f)
             animation.duration = expandAndShrinkDuration
             animation.fillAfter = true
@@ -180,7 +176,7 @@ class ExpandableLayout : TableLayout {
 
     fun show() {
         if (faded) {
-            faded=false
+            faded = false
             val animation = AlphaAnimation(0f, 1f)
             animation.duration = expandAndShrinkDuration
             animation.fillAfter = true
@@ -197,15 +193,5 @@ class ExpandableLayout : TableLayout {
             r.displayMetrics
         ).roundToInt()
     }
-
-    fun dpToPx(dp: Int): Int {
-        val r: Resources = resources
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp.toFloat(),
-            r.displayMetrics
-        ).roundToInt()
-    }
-
 
 }
