@@ -10,6 +10,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Display
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -17,6 +18,8 @@ import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.TableLayout
 import android.widget.TableRow
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.children
 import kotlin.math.roundToInt
 
@@ -92,27 +95,23 @@ class ExpandableLayout : TableLayout {
     }
 
     private fun translateToCenter(){
-        val wm=context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        val display: Display = wm.defaultDisplay
-        val size = Point()
-        display.getSize(size)
 
-        var moveX = size.x / 2 - (this.x+(width+widthIncrement)/2)
-        var moveY = size.y / 2 - (this.y+(width+heightIncrement)/2)
+        val w=(parent as ViewGroup).width
+        val h=(parent as ViewGroup).height
 
-        this.animate()
-            .translationX(moveX)
-            .translationY(moveY)
-            .setDuration(expandAndShrinkDuration)
-            .setInterpolator(LinearInterpolator())
-            .start()
+        var moveX = w / 2 - (this.x+(width+widthIncrement)/2)
+        var moveY = h / 2 - (this.y+(width+heightIncrement)/2)
+        animateTranslation(moveX,moveY)
     }
 
     private fun translateBack(){
+        animateTranslation(0f,0f)
+    }
 
+    private fun animateTranslation(moveX:Float, moveY:Float){
         this.animate()
-            .translationX(0f)
-            .translationY(0f)
+            .translationX(moveX)
+            .translationY(moveY)
             .setDuration(expandAndShrinkDuration)
             .setInterpolator(LinearInterpolator())
             .start()
