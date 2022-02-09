@@ -5,6 +5,7 @@
         <attr name="expandWidthBy" format="dimension" />
         <attr name="iconsSize" format="dimension" />
         <attr name="iconsPadding" format="dimension" />
+        <attr name="iconsMargin" format="dimension" />
         <attr name="rowsCount" format="integer" />
         <attr name="columnsCount" format="integer" />
     </declare-styleable>

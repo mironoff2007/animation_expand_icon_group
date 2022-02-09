@@ -21,6 +21,7 @@
         app:iconsSize="@dimen/icons_size"
         app:rowsCount="3"
         app:columnsCount="2"
+        app:iconsMargin="@dimen/icons_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -107,6 +108,7 @@
         app:iconsSize="@dimen/icons_size"
         app:rowsCount="3"
         app:columnsCount="2"
+        app:iconsMargin="@dimen/icons_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -193,6 +195,7 @@
         app:iconsSize="@dimen/icons_size"
         app:rowsCount="3"
         app:columnsCount="2"
+        app:iconsMargin="@dimen/icons_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -279,6 +282,7 @@
         app:iconsSize="@dimen/icons_size"
         app:rowsCount="3"
         app:columnsCount="2"
+        app:iconsMargin="@dimen/icons_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

@@ -28,6 +28,7 @@ class ExpandableLayout : TableLayout {
     //must be declared in xml
     private var heightIncrement =0//px
     private var widthIncrement =0//px
+    private var iconsMargin =0//px
     private var iconSize =0//px
     private var rowsCount = 0
     private var columnsCount = 0
@@ -45,6 +46,7 @@ class ExpandableLayout : TableLayout {
             widthIncrement = dpToPx(expandWidthBy)
 
             iconSize = dpToPx(a.getStringOrThrow(R.styleable.ExpandableLayout_iconsSize))
+            iconsMargin= dpToPx(a.getStringOrThrow(R.styleable.ExpandableLayout_iconsMargin))
             rowsCount= a.getIntOrThrow(R.styleable.ExpandableLayout_rowsCount)
             columnsCount= a.getIntOrThrow(R.styleable.ExpandableLayout_columnsCount)
         }
@@ -122,7 +124,7 @@ class ExpandableLayout : TableLayout {
             //Add margins
             this.children.filter { it is TableRow }.forEach {
                 val params = it.layoutParams as MarginLayoutParams
-                params.topMargin = calculateMargin(animatedValue, rowsCount)
+                params.topMargin = calculateMargin(animatedValue-iconsMargin*rowsCount, rowsCount)
                 it.layoutParams = params
             }
         }
@@ -157,7 +159,7 @@ class ExpandableLayout : TableLayout {
      * */
     private fun calculateMargin(animatedValue: Int, count: Int): Int {
         val allIconsSize = count * iconSize
-        var margin: Int = ((animatedValue - allIconsSize) / (count + 1))
+        var margin: Int = (animatedValue - allIconsSize) / (count + 1)
         if (margin < 0) {
             margin = 0
         }
