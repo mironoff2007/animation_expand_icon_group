@@ -2,4 +2,5 @@
 <resources>
     <dimen name="icons_size">75dp</dimen>
     <dimen name="icons_padding">20dp</dimen>
+    <dimen name="icons_margin">10dp</dimen>
 </resources>
