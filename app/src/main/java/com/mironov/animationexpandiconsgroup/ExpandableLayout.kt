@@ -124,7 +124,7 @@ class ExpandableLayout : TableLayout {
             //Add margins
             this.children.filter { it is TableRow }.forEach {
                 val params = it.layoutParams as MarginLayoutParams
-                params.topMargin = calculateMargin(animatedValue-iconsMargin*rowsCount, rowsCount)
+                params.topMargin = calculateMarginHeight(animatedValue, rowsCount)
                 it.layoutParams = params
             }
         }
@@ -146,7 +146,7 @@ class ExpandableLayout : TableLayout {
                 val rowView = row as TableRow
                 rowView.children.forEach { icon ->
                     val params = icon.layoutParams as MarginLayoutParams
-                    params.leftMargin = calculateMargin(animatedValue, columnsCount)
+                    params.leftMargin = calculateMarginWidth(animatedValue, columnsCount)
                     icon.layoutParams = params
                 }
             }
@@ -157,11 +157,20 @@ class ExpandableLayout : TableLayout {
     /**
      **Calculates margins to arrange icons evenly in container
      * */
-    private fun calculateMargin(animatedValue: Int, count: Int): Int {
+    private fun calculateMarginHeight(animatedValue: Int, count: Int): Int {
         val allIconsSize = count * iconSize
-        var margin: Int = (animatedValue - allIconsSize) / (count + 1)
+        var margin: Int = (animatedValue-iconsMargin*rowsCount- allIconsSize) / (count + 1)
         if (margin < 0) {
             margin = 0
+        }
+        return margin
+    }
+
+    private fun calculateMarginWidth(animatedValue: Int, count: Int): Int {
+        val allIconsSize = count * iconSize
+        var margin: Int = (animatedValue - allIconsSize) / (count + 1)
+        if (margin < iconsMargin) {
+            margin = iconsMargin
         }
         return margin
     }
