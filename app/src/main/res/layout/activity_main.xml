@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/colorPrimary">
 
     <com.mironov.animationexpandiconsgroup.ExpandableLayout
         android:id="@+id/container1"
@@ -90,6 +91,261 @@
                 android:background="@drawable/circle_gray"
                 android:src="@drawable/ic_baseline_wifi" />
         </TableRow>
-
     </com.mironov.animationexpandiconsgroup.ExpandableLayout>
+
+    <com.mironov.animationexpandiconsgroup.ExpandableLayout
+        android:id="@+id/container2"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="24dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/container_shape"
+        app:expandHeightBy="300dp"
+        app:expandWidthBy="150dp"
+        app:iconsSize="@dimen/icons_size"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_airplanemode_active" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_green"
+                android:src="@drawable/ic_baseline_phone" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_green"
+                android:src="@drawable/ic_baseline_network" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_blue"
+                android:src="@drawable/ic_baseline_bluetooth_audio" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_gps" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_wifi" />
+        </TableRow>
+    </com.mironov.animationexpandiconsgroup.ExpandableLayout>
+
+    <com.mironov.animationexpandiconsgroup.ExpandableLayout
+        android:id="@+id/container3"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="240dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/container_shape"
+        app:expandHeightBy="300dp"
+        app:expandWidthBy="150dp"
+        app:iconsSize="@dimen/icons_size"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_airplanemode_active" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_green"
+                android:src="@drawable/ic_baseline_phone" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_green"
+                android:src="@drawable/ic_baseline_network" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_blue"
+                android:src="@drawable/ic_baseline_bluetooth_audio" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_gps" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_wifi" />
+        </TableRow>
+    </com.mironov.animationexpandiconsgroup.ExpandableLayout>
+
+    <com.mironov.animationexpandiconsgroup.ExpandableLayout
+        android:id="@+id/container4"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="240dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/container_shape"
+        app:expandHeightBy="300dp"
+        app:expandWidthBy="150dp"
+        app:iconsSize="@dimen/icons_size"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_airplanemode_active" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_green"
+                android:src="@drawable/ic_baseline_phone" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_green"
+                android:src="@drawable/ic_baseline_network" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_blue"
+                android:src="@drawable/ic_baseline_bluetooth_audio" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_gps" />
+
+            <ImageView
+                android:layout_width="@dimen/icons_size"
+                android:layout_height="@dimen/icons_size"
+                android:padding="@dimen/icons_padding"
+                android:layout_marginLeft="@dimen/icons_margin"
+                android:layout_marginTop="@dimen/icons_margin"
+                android:background="@drawable/circle_gray"
+                android:src="@drawable/ic_baseline_wifi" />
+        </TableRow>
+    </com.mironov.animationexpandiconsgroup.ExpandableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
